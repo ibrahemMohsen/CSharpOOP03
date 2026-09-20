@@ -21,5 +21,9 @@ namespace SmartDeliveryManagementSystem
         {
 
         }
+        public override void PrintShipment()
+        {
+            base.PrintShipment();
+        }
     }
 }

@@ -68,5 +68,11 @@ namespace SmartDeliveryManagementSystem
                 return DeliveryFee + (decimal)(Weight * 5) + CustomsFee;
             }
         }
+        public override void PrintShipment()
+        {
+            base.PrintShipment();
+            Console.WriteLine($"Destination Country: {DestinationCountry}");
+            Console.WriteLine($"Customs Fee: {CustomsFee}");
+        }
     }
 }

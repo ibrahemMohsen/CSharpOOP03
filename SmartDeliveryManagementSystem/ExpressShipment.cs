@@ -46,5 +46,10 @@ namespace SmartDeliveryManagementSystem
                 return DeliveryFee + (decimal)(Weight * 5) + ExtraFee;
             }
         }
+        public override void PrintShipment()
+        {
+            base.PrintShipment();
+            Console.WriteLine($"Extra Fee: {ExtraFee}");
+        }
     }
 }
