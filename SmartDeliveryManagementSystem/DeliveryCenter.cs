@@ -94,6 +94,7 @@ namespace SmartDeliveryManagementSystem
         }
         public void PrintAllShipments()
         {
+            // I already do that from the previous assignment
             for (int i = 0; i < _shipments!.Length; i++)
             {
                 if (_shipments[i] != null)
