@@ -60,6 +60,7 @@ namespace SmartDeliveryManagementSystem
             DestinationCountry = destinationCountry;
             CustomsFee = customsFee;
         }
+        // Already implemented in the last Assignemnt
         public override decimal EstimatedCost
         {
             get

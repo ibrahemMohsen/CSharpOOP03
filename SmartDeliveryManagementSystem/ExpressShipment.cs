@@ -38,6 +38,7 @@ namespace SmartDeliveryManagementSystem
             ExtraFee = extraFee;
         }
 
+        // Already implemented in the last Assignemnt
         public override decimal EstimatedCost
         {
             get
