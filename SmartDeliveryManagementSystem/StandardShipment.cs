@@ -6,6 +6,7 @@ namespace SmartDeliveryManagementSystem
 {
     internal class StandardShipment : Shipment
     {
+        // I already call the base class constructor from the last task
         public StandardShipment(string TrackingCode) : base(TrackingCode)
         {
 

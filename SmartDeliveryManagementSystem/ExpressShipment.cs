@@ -21,6 +21,7 @@ namespace SmartDeliveryManagementSystem
                 }
             }
         }
+        // I already call the base class constructor from the last task
         public ExpressShipment(string TrackingCode, decimal extraFee) : base(TrackingCode)
         {
             ExtraFee = extraFee;

@@ -37,6 +37,7 @@ namespace SmartDeliveryManagementSystem
             }
         }
 
+        // I already call the base class constructor from the last task
         public InternationalShipment(
             string trackingCode,
             string destinationCountry,
