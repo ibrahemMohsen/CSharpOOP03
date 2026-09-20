@@ -23,8 +23,6 @@ namespace SmartDeliveryManagementSystem
                 decimal customsFee
             ) : base(trackingCode, description, weight, deliveryFee, destination, destinationCountry, customsFee)
         {
-            DestinationCountry = destinationCountry;
-            CustomsFee = customsFee;
         }
         public override sealed void GenerateCustomsReport()
         {
