@@ -10,13 +10,24 @@
             // Question A:
             // Overloading Allows a class to have multiple methods with the same name but different parameters (different in type, order, or number)
             // Overriding Allows a derived class to provide a specific implementation of a method that is already defined in its base class
-            
+
             // Question B:
             // Static Binding: resolved at compile time, faster, reference type decides which method implementation to call,
             // happens with method overloading, method hiding, non-virtual methods, static methods
             // Dynamic Binding: resolved at runtime, slower, object decides which method implementation to call,
             // happens with: method overriding, method hiding, and interface methods
 
+            #endregion
+
+            #region Question 02
+            // Question A:
+            // Prevents deriving/inheritance from this class and keeps its behavior predictable
+
+            // Question B:
+            // A sealed class cannot be inherited. A sealed method cannot be overriden in derived classes but other methods of the same class can
+
+            // Question C:
+            // No, Because the compiler prevents sealed methods from being overriden
             #endregion
         }
     }
