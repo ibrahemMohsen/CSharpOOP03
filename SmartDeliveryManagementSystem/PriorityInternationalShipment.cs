@@ -4,7 +4,8 @@ using System.Text;
 
 namespace SmartDeliveryManagementSystem
 {
-    internal class PriorityInternationalShipment: InternationalShipment
+    // forgot the sealed keyword earlier
+    internal sealed class PriorityInternationalShipment: InternationalShipment
     {
         public PriorityInternationalShipment(
     string trackingCode,

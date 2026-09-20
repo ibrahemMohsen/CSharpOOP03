@@ -8,6 +8,7 @@ namespace SmartDeliveryManagementSystem
     {
         private Shipment[] _shipments;
         public string CenterName { get; set; }
+        public Driver Driver { get; set; }
 
         public DeliveryCenter() : this("Unknown")
         {

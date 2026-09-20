@@ -8,145 +8,49 @@ namespace SmartDeliveryManagementSystem
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter center name: ");
-            string centerName = Console.ReadLine()!;
+            Driver driver = new Driver("Ahmed Mohamed");
+            DeliveryCenter deliveryCenter = new DeliveryCenter("Assiut Delivery Center");
+            deliveryCenter.Driver = driver;
+            DeliveryAddress standardDeliveryDestination = new("Assiut", "Alsalam", 123);
+            StandardShipment standardShipment = new StandardShipment("SH001", "Laptop", 3, 80m, standardDeliveryDestination);
+            
+            DeliveryAddress expressDeliveryDestination = new("Assiut", "Alsalam", 123);
+            ExpressShipment expressShipment = new ExpressShipment("SH001", "Laptop", 2, 60m, expressDeliveryDestination, 30);
+            
+            DeliveryAddress internationalDeliveryDestination = new("Assiut", "Alsalam", 123);
+            InternationalShipment internationalShipment = new InternationalShipment("SH001", "Telivision", 8, 120m, expressDeliveryDestination, "Germany", 100m);
 
-            DeliveryCenter center = new DeliveryCenter(centerName);
+            deliveryCenter.AddShipment(standardShipment);
+            deliveryCenter.AddShipment(expressShipment);
+            deliveryCenter.AddShipment(internationalShipment);
 
-            StandardShipment standardShipment = ReadStandardShipment();
-            ExpressShipment expressShipment = ReadExpressShipment();
-            InternationalShipment internationalShipment =
-                ReadInternationalShipment();
+            deliveryCenter.PrintAllShipments();
 
-            center.AddShipment(standardShipment);
-            center.AddShipment(expressShipment);
-            center.AddShipment(internationalShipment);
+            DeliveryHelper.PrintShipmentDetails(standardShipment);
+            DeliveryHelper.PrintShipmentDetails(expressShipment);
+            DeliveryHelper.PrintShipmentDetails(internationalShipment);
 
-            Console.WriteLine("All shipments:");
-            center.PrintAllShipments();
 
-            Console.Write("Enter a tracking code to search for: ");
-            string searchCode = Console.ReadLine()!;
+            Console.WriteLine($"Original Weight: {standardShipment.Weight}");
+            standardShipment.UpdateWeight(10);
+            Console.WriteLine($"Updated Weight: {standardShipment.Weight}");
+            standardShipment.UpdateWeight(7);
+            Console.WriteLine($"Updated Weight: {standardShipment.Weight}");
 
-            Shipment? foundShipment = center[searchCode];
 
-            if (foundShipment is not null)
-                foundShipment.PrintShipment();
-            else
-                Console.WriteLine("Shipment not found.");
+            Shipment[] shipments = { standardShipment, expressShipment, internationalShipment };
+            foreach(Shipment shipment in shipments)
+            {
+                shipment.PrintShipment();
+            }
 
-            Console.Write("Enter a tracking code to remove: ");
-            string removalCode = Console.ReadLine()!;
-
-            Console.WriteLine(
-                center.RemoveShipment(removalCode)
-                    ? "Shipment removed successfully."
-                    : "Shipment not found.");
-
-            Console.WriteLine("Remaining shipments:");
-            center.PrintAllShipments();
+            // sealed class can't inherit/derive from
+            //sealed method can't be overriden
         }
-        static StandardShipment ReadStandardShipment()
-        {
-            Console.WriteLine("\nEnter Standard Shipment Data");
+        // error: cannot derive from sealed type "PriorityInternationalShipment"
+        //public class SomeClass : PriorityInternationalShipment
+        //{
+        //}
 
-            Console.Write("Tracking code: ");
-            string trackingCode = Console.ReadLine()!;
-
-            Console.Write("Description: ");
-            string description = Console.ReadLine()!;
-
-            Console.Write("Weight: ");
-            double weight = double.Parse(Console.ReadLine()!);
-
-            Console.Write("Delivery fee: ");
-            decimal deliveryFee = decimal.Parse(Console.ReadLine()!);
-
-            DeliveryAddress destination = ReadDeliveryAddress();
-
-            return new StandardShipment(
-                trackingCode,
-                description,
-                weight,
-                deliveryFee,
-                destination);
-        }
-
-        static ExpressShipment ReadExpressShipment()
-        {
-            Console.WriteLine("\nEnter Express Shipment Data");
-
-            Console.Write("Tracking code: ");
-            string trackingCode = Console.ReadLine()!;
-
-            Console.Write("Description: ");
-            string description = Console.ReadLine()!;
-
-            Console.Write("Weight: ");
-            double weight = double.Parse(Console.ReadLine()!);
-
-            Console.Write("Delivery fee: ");
-            decimal deliveryFee = decimal.Parse(Console.ReadLine()!);
-
-            DeliveryAddress destination = ReadDeliveryAddress();
-
-            Console.Write("Extra fee: ");
-            decimal extraFee = decimal.Parse(Console.ReadLine()!);
-
-            return new ExpressShipment(
-                trackingCode,
-                description,
-                weight,
-                deliveryFee,
-                destination,
-                extraFee);
-        }
-
-        static InternationalShipment ReadInternationalShipment()
-        {
-            Console.WriteLine("\nEnter International Shipment Data");
-
-            Console.Write("Tracking code: ");
-            string trackingCode = Console.ReadLine()!;
-
-            Console.Write("Description: ");
-            string description = Console.ReadLine()!;
-
-            Console.Write("Weight: ");
-            double weight = double.Parse(Console.ReadLine()!);
-
-            Console.Write("Delivery fee: ");
-            decimal deliveryFee = decimal.Parse(Console.ReadLine()!);
-
-            DeliveryAddress destination = ReadDeliveryAddress();
-
-            Console.Write("Destination country: ");
-            string destinationCountry = Console.ReadLine()!;
-
-            Console.Write("Customs fee: ");
-            decimal customsFee = decimal.Parse(Console.ReadLine()!);
-
-            return new InternationalShipment(
-                trackingCode,
-                description,
-                weight,
-                deliveryFee,
-                destination,
-                destinationCountry,
-                customsFee);
-        }
-        static DeliveryAddress ReadDeliveryAddress()
-        {
-            Console.Write("Enter City Name");
-            string city = Console.ReadLine()!;
-
-            Console.Write("Enter Street: ");
-            string street = Console.ReadLine()!;
-
-            Console.Write("Enter Building Number: ");
-            int buildingNumber = int.Parse(Console.ReadLine()!);
-
-            return new DeliveryAddress(city, street, buildingNumber);
-        }
     }
 }
