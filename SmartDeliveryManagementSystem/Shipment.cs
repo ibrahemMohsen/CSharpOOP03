@@ -57,6 +57,7 @@ namespace SmartDeliveryManagementSystem
                 }
             }
         }
+        // I made it virtual in the last task because I forgot we didn't cover the topic yet.
         public virtual decimal EstimatedCost
         {
             get
@@ -97,7 +98,16 @@ namespace SmartDeliveryManagementSystem
                 DeliveryFee = newFee;
             }
         }
-        public void PrintShipment()
+
+        public void UpdateWeight(double weight)
+        {
+            Weight = weight;
+        }
+        public void UpdateWeight(double weight, double extraPackagingWeight)
+        {
+            Weight = weight + extraPackagingWeight;
+        }
+        public virtual void PrintShipment()
         {
             Console.WriteLine($"Tracking Code: {TrackingCode}");
             Console.WriteLine($"Decription: {Description}");
