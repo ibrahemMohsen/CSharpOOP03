@@ -74,5 +74,9 @@ namespace SmartDeliveryManagementSystem
             Console.WriteLine($"Destination Country: {DestinationCountry}");
             Console.WriteLine($"Customs Fee: {CustomsFee}");
         }
+        public virtual void GenerateCustomsReport()
+        {
+            Console.WriteLine("This is the International Shipment Customs Report");
+        }
     }
 }
